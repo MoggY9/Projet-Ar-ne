@@ -1,1 +1,215 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <SDL/SDL.h>
+#include <time.h>
+#define NBJOUEUR
+int main(int argc, char *argv[])
+{
+   // Suite a de nombreux problèmes de la SDL,  nous n'avons pu terminer a temps le projet. Merci de votre compréhension!
+    int continuer=1;//pour le while
+    int aleatoire;
 
+
+
+    SDL_Surface *ecran = NULL, *image=NULL, *monstre=NULL, *perso=NULL, *teleporteur=NULL, *sol=NULL, *mur=NULL;
+
+    SDL_Rect positionfond, positionMonstre,positionperso,positionmur,positionsol;
+    SDL_Init(SDL_INIT_VIDEO | SDL_DOUBLEBUF);
+    SDL_Event event;//gere les evenement
+
+
+
+    ecran=SDL_SetVideoMode(800, 600, 32, SDL_HWSURFACE);//on crée l'écran avec le format 800x600 avec les couleurs en 32 bit et l'autre truc osef
+
+    SDL_WM_SetCaption(" ARENE DU TURFU !", NULL);// le nom a gauche en haut
+
+    image=SDL_LoadBMP("fond.bmp");//image de fond
+
+    monstre=SDL_LoadBMP("monstre2.bmp");
+    perso=SDL_LoadBMP("perso.bmp");//on charge les images nécessaire
+    teleporteur=SDL_LoadBMP("teleporteur.bmp");
+    sol=SDL_LoadBMP("sol.bmp");
+    mur=SDL_LoadBMP("arbre2.bmp");
+
+
+
+
+    srand(time(NULL));
+
+    positionfond.x = 0;//position de l'image de fond
+    positionfond.y = 0;//position de l'image de fond
+
+    positionMonstre.x=100; //rand()%500;//position du rond rouge
+    positionMonstre.y=200;//rand()%500;//position du rond rouge
+
+    positionperso.x= 450;//rand()%500;
+    positionperso.y=350;//rand()%500;
+
+    positionsol.x=0;
+    positionsol.y=0;
+
+    positionmur.x=0;
+    positionmur.y=0;
+
+
+    int i=0;
+    int j=0;
+    int map[22][26]={{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,4,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,4,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,0,0,1,1,1,0,0,0,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,1,0,0,1,0,0,1,1,1,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,0,1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,1,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,1,1,0,1,0,0,1,1,0,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,1,1,0,1,1,1,1,1,1,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1,1,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,1,1,1,1,1,5,1,1,1,1,1,1,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,0,0,0,0,0,0,0,0,0,0,4,1,1,0,0,0,0,0,0,0,0,0,0,0,1},{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+
+
+
+    SDL_EnableKeyRepeat(10,10);
+    while(continuer)
+    {
+         for (i=0; i<22;i++){
+            for (j=0;j<26;j++){
+                if (map[i][j]==0){
+                        ;
+                        positionsol.x=i;
+                        positionsol.y=j;
+sol=SDL_LoadBMP("sol.bmp");
+                    SDL_BlitSurface(sol, NULL, ecran, &positionsol);
+                    SDL_Flip(ecran);
+                }
+                if (map[i][j]==1){
+
+                    positionmur.x=i;
+                    positionmur.y=j;
+mur=SDL_LoadBMP("arbre2.bmp");
+                    SDL_BlitSurface(mur, NULL, ecran, &positionmur);
+                    SDL_Flip(ecran);
+                }
+            }
+        }
+if (positionperso.x<0||positionperso.x>800||positionperso.y>600||positionperso.y<0){
+            /// pas rentrer dans les murs
+            //if((positionperso.x<&&positionperso.y>)||(positionperso.x<&&positionperso.y>)||(positionperso.x<&&positionperso.y>)||(positionperso.x<&&positionperso.y>||){
+                SDL_WaitEvent(&event);
+                switch(event.type)
+         /  if (positionperso.x==/*teleporteur*/&&positionperso.y==/*teleporteur*/)
+            {
+
+            positionperso.x= /*teleporteur*/;
+            positionperso.y= /*teleporteur*/;
+        }
+                {
+                    case SDL_QUIT:
+                        continuer=0;
+                        break;
+                    case SDL_KEYDOWN:
+                        switch (event.key.keysym.sym)
+                        {
+                            case (SDLK_ESCAPE):
+                                continuer=0;
+                                break;
+
+                            case (SDLK_UP):// Flèche haut
+                                positionperso.y=positionperso.y-20;
+                                break;
+
+                            case (SDLK_DOWN): // Flèche bas
+                                positionperso.y=positionperso.y+20;
+                                break;
+
+                            case (SDLK_RIGHT): // Flèche droite
+                                positionperso.x=positionperso.x+20;
+                                break;
+
+                            case (SDLK_LEFT): // Flèche gauche
+                                positionperso.x=positionperso.x-20;
+                                break;
+
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+
+
+///dans du terrain,
+        if (positionperso.x<800||positionperso.x>0||positionperso.y>0||positionperso.y<600){
+            /// pas rentrer dans les murs
+           // if(positionMonstre.x<&&positionMonstre.y>||positionMonstre.x<&&positionMonstre.y>||positionMonstre.x<&&positionMonstre.y>||positionMonstre.x<&&positionMonstre.y>||){
+                if(positionMonstre.x > 780)
+                {
+                    positionMonstre.x=positionMonstre.x-20;
+                }
+                else if(positionMonstre.x <20)
+                {
+                positionMonstre.x=positionMonstre.x+20;
+                }
+                else if(positionMonstre.y >580)
+                {
+                    positionMonstre.y=positionMonstre.y-20;
+                }
+                else if(positionMonstre.y <20)
+                {
+                    positionMonstre.y=positionMonstre.y+20;
+                }
+            }
+
+        if (positionperso.x==/*teleporteur*/&&positionperso.y==/*teleporteur*/)
+            {
+            positionperso.x= /*teleporteur*/;
+            positionperso.y= /*teleporteur*/;
+        }
+
+    }
+
+
+
+
+    SDL_FreeSurface(perso);
+    SDL_FreeSurface(sol);
+    SDL_FreeSurface(ecran);
+    SDL_FreeSurface(image);
+    SDL_FreeSurface(monstre);
+    SDL_FreeSurface(teleporteur);
+    SDL_FreeSurface(mur);//comme on a allouer on va liberer la mémoire
+    SDL_Quit();
+
+    return EXIT_SUCCESS;
+
+}
+
+
+
+
+    /*         aleatoire = rand()%4+ 1;
+
+
+        if(aleatoire == 1) //||  positionbleu.x < positionrouge.x)
+        {
+            for(i=0; i<5; i++)
+            {
+                positionrouge.x++;
+            }
+        }
+        else if(aleatoire == 2) //|| positionbleu.x > positionrouge.x)
+        {
+            for(i=0; i<5; i++)
+            {
+                positionrouge.x--;
+            }
+        }
+        else if(aleatoire == 3) //|| positionbleu.y < positionrouge.y)
+        {
+            for(i=0; i<5; i++)
+            {
+                positionrouge.y++;
+            }
+        }
+        else if(aleatoire ==4)//||  positionbleu.y > positionrouge.y)
+        {
+            for(i=0; i<5; i++)
+            {
+                positionrouge.y--;
+            }
+        }
