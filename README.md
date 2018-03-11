@@ -20,7 +20,7 @@ Les règles du jeu :
 Atteindre le centre du Labyrinthe Pour participé à la suite de la compétition. Dans le cas contraire, au bout d’un lapse de temps non divulgués, les restantes dans cette zone seront détruites.
 Dans les Arènes, un match à mort s’engage entre les survivants qui doivent éliminer leurs adversaires tout en évitant de se faire châtiés par les autres IA ou les monstres.
 Déplacements autorisés : 2 mouvement ou 1 mouvement et une attaque.
-Le premier joueur à commencer la partie est choisi aléatoirement, les IA se voient attribuées un ordre de passage entre "6" et "le nombre total d'IA+6". Les chiffres de 0 à 5 étant déjà utilisés pour les murs, le sol etc...
+Le premier joueur à commencer la partie est choisi aléatoirement, les IA se voient attribuées un ordre de passage entre "6" et "le nombre total d'IA+6". Les chiffres de 0 à 5 étant déjà utilisés pour les murs, le sol etc... Le joueur avec le nombre le plus élevé commencera la partie.
 
 
 
