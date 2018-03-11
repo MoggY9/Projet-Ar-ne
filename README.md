@@ -46,10 +46,10 @@ Notre jeu n’est pas encore parfait, et nous en sommes conscient, c’est pourq
 
 Equipe Arène: Baretta Da Wae
 
-LAUZE Lucas
-QUENNEVILLE Eudes
-DEROUICHE Yanis
-PINELLI Jean
-REN Victor
+LAUZE Lucas,
+QUENNEVILLE Eudes,
+DEROUICHE Yanis,
+PINELLI Jean,
+REN Victor,
 SEBA Jad
 
