@@ -42,3 +42,14 @@ Ce jeu présente plusieurs avantages, en effet en plus d’avoir un gameplay ori
 VI) Les améliorations
 
 Notre jeu n’est pas encore parfait, et nous en sommes conscient, c’est pourquoi nous pensons qu’avec du temps il nous serait possible d’inclure des objets de bonus ou de malus dans le jeu pour le rendre plus complexe. De plus, il nous serait aussi possible de rajouter un système d’attaque spéciale utilisable dans les deux dernière phases de jeu.
+
+
+Equipe Arène: Baretta Da Wae
+
+LAUZE Lucas
+QUENNEVILLE EUDES
+DEROUICHE Yanis
+PINELLI Jean
+REN Victor
+SEBA Jad
+
