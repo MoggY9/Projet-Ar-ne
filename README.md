@@ -20,6 +20,7 @@ Les règles du jeu :
 Atteindre le centre du Labyrinthe Pour participé à la suite de la compétition. Dans le cas contraire, au bout d’un lapse de temps non divulgués, les restantes dans cette zone seront détruites.
 Dans les Arènes, un match à mort s’engage entre les survivants qui doivent éliminer leurs adversaires tout en évitant de se faire châtiés par les autres IA ou les monstres.
 Déplacements autorisés : 2 mouvement ou 1 mouvement et une attaque.
+Le premier joueur à commencer la partie est choisi aléatoirement, les IA se voient attribuées un ordre de passage entre "6" et "le nombre total d'IA+6". Les chiffres de 0 à 5 étant déjà utilisés pour les murs, le sol etc...
 
 
 
@@ -42,6 +43,8 @@ Ce jeu présente plusieurs avantages, en effet en plus d’avoir un gameplay ori
 VI) Les améliorations
 
 Notre jeu n’est pas encore parfait, et nous en sommes conscient, c’est pourquoi nous pensons qu’avec du temps il nous serait possible d’inclure des objets de bonus ou de malus dans le jeu pour le rendre plus complexe. De plus, il nous serait aussi possible de rajouter un système d’attaque spéciale utilisable dans les deux dernière phases de jeu.
+
+Projet non-achevé à cause du problème de la SDL, nous n'avons pas réussi à afficher correctement nos textures et donc pas réussi à afficher la map voulue ( notamment à cause de la commande "Rect" qui nous bloquait).
 
 
 Equipe Arène: Baretta Da Wae
